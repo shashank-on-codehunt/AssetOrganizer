@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title th:text="#{HomePage}">Home Page</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" rel="stylesheet" media="screen"
+          />
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"
+            ></script>
+
+</head>
+<body>
+<h1 class="display-1">Navbars</h1>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <a href="" class="navbar-brand">Internalisation POC</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#myNav2">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="myNav2">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="index.html" th:href="@{/index}" class="nav-link" th:text="#{HomePage}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="page1.html" th:href="@{/Page1}" class="nav-link active" th:text="#{FirstPage}">Page1</a>
+            </li>
+            <li class="nav-item">
+                <a href="page2.html" th:href="@{/Page2}" class="nav-link" th:text="#{SecondPage}">Page2</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="jumbotron">
+    <div class="container">
+        <h1 th:text="#{Welcome}+' '+#{FirstPage}">Welcome to Page 1</h1>
+    </div>
+</div>
+</body>
+</html>
