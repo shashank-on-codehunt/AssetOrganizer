@@ -3,6 +3,7 @@
 This project shows how using Spring and Java one can adopt Internationalization 
 Here the demonstation has been using Thymeleaf Template. 
 
+This is part of  Article : https://scubeangle.in/blog/devlog/2020-11-14-Internationalization-Localization-in-JAVA-and-Spring/ which contains details about theory and concepts used here.
 ## Technology used 
 1. Thymeleaf 
 2. Spring Boot with Gradle
