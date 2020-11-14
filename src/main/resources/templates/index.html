@@ -9,16 +9,17 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"
             ></script>
+    <script src="../static/js/common.js"
+            th:src="@{/js/common.js}"></script>
 
 </head>
-<body>
-<h1 class="display-1">Navbars</h1>
+<body onload="onLoaders()">
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <a href="" class="navbar-brand">Internalisation POC</a>
+    <a href="" class="navbar-brand ml-3">Internalisation POC</a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#myNav2">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="myNav2">
+    <div class="collapse navbar-collapse justify-content-between" id="myNav2">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a href="index.html" th:href="@{/index}" class="nav-link active" th:text="#{HomePage}">Home</a>
@@ -30,11 +31,21 @@
                 <a href="page2.html" th:href="@{/Page2}" class="nav-link" th:text="#{SecondPage}">Page2</a>
             </li>
         </ul>
+        <form action="" class="form-inline mr-3">
+            <div class="form-group">
+                <label for="switch_language" onchange="reloadWithLanguage()">Language</label>
+                <select id="switch_language" class="form-control">
+                    <option value="en-US">English-US</option>
+                    <option value="fr">French</option>
+                    <option value="hi">Hindi</option>
+                </select>
+            </div>
+        </form>
     </div>
 </nav>
 <div class="jumbotron">
     <div class="container">
-        <h1>Welcome to पहला पन्ना</h1>
+        <h1 th:text="#{Welcome}+' '+#{HomePage}">Welcome to Page 1</h1>
     </div>
 </div>
 </body>
