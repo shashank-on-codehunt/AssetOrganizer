@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.`thymeleaf`.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script>
+        function appendTags() {
+            if ($('#addTag').val() != "") {
+                var tagElement = "<div class='input-group m-1'><span class='input-group-text tagsCustomClass'>" + $('#addTag').val() + "</span><div class='input-group-append'><button onclick='deleteTag(event)' class='btn btn-danger'><i class='fa fa-times-circle' aria-hidden='true'></i></button></div></div>";
+                var parentTagElement = document.getElementById('taglabels');
+                $('#taglabels').append(tagElement);
+                $('#addTag').val("");
+                $('#finalTags').val(getFinalTags());
+            }
+        };
+        function deleteTag(event) {
+            var toDelElement = event.target;
+            if (event.target.onclick == null) {
+                toDelElement = event.target.parentElement;
+            }
+            toDelElement.parentElement.parentElement.remove();
+        }
+        function getFinalTags() {
+            var tagList = '';
+            for (var i = 0; i < $('.tagsCustomClass').length; i++) {
+                tagList = tagList + $('.tagsCustomClass')[i].innerHTML + ';';
+            }
+            return tagList;
+        }
+        $(document).ready(function () {
+            $('#priorityLabel').text("Priority : " + $('#customRange3').val());
+            $("#customRange3").change(function () {
+                $('#priorityLabel').text("Priority : " + $('#customRange3').val());
+
+            });
+            $("#addTag").keypress(function (e) {
+                if (e.keyCode === 13) {
+                    appendTags();
+                }
+            });
+        });
+    </script>
+    <title>Item Class</title>
+</head>
+<body>
+    <div id="fog-header" class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Item Description</h1>
+            <p class="lead">Provide the full information about the Item.</p>
+            <!-- <a href="" class="btn btn-success btn-lg">Search Existing Items</a> -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="input-group my-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Item Tags</span>
+            </div>
+            <div class="custom-file">
+                <input type="text" class="form-control" placeholder="Tag Name" id="addTag">
+            </div>
+            <div class="input-group-append">
+                <button id="addTags" onclick="appendTags()" class="btn btn-success">Add</button>
+            </div>
+        </div>
+        <div id="taglabels" class="form-inline">
+        </div>
+        <form th:object="${item}" th:action="@{/item/}"  method="post">
+            <input type="hidden" id="finalTags" name="finalTags" th:field="*{tag}">
+            <input type="hidden" id="userId" name="finalTags" value='user1' th:field="*{userId}">
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="itemName">Item Name</label>
+                        <input type="text" id="itemName" class="form-control" placeholder="Item Name" th:field="*{itemName}">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="parentItemName">Parent Item</label>
+                        <input type="text" id="parentItemName" class="form-control" placeholder="Parent Item" th:field="*{parentItemName}">
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    <div class="col-md-6">
+                        <label for="customRange3" id='priorityLabel'>Priority</label>
+                        <input type="range" class="custom-range" min="0" max="5" step="1" id="customRange3" value="0" th:field="*{priority}">
+                    </div>
+                    <div class="col-md-3 offset-md-1">
+                        <input type="file" class="form-control-file mt-4" id="exampleFormControlFile1" multiple>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="submit" value="Submit" class="btn btn-md-8 btn-primary w-50">
+            </div>
+        </form>
+    </div>
+    <style>
+        #fog-header {
+            background: url("https://images.unsplash.com/photo-1514418197935-e0cac2bb695a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=73703fc107d2c3f2835ec8af1f981c25&auto=format&fit=crop&w=1950&q=80");
+            background-position: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    </body>
+</html>
