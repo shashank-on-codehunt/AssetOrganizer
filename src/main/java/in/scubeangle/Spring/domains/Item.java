@@ -17,7 +17,7 @@ public class Item {
     private Long id;
 
     private String itemName;
-    private String x;
+    private String parentItemName;
     private int priority;
     private String tag;
     private String userId;
