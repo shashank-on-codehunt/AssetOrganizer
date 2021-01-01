@@ -15,4 +15,5 @@ public class ItemCommand {
     private int priority;
     private String tag;
     private String userId;
+    private Byte[] image;
 }

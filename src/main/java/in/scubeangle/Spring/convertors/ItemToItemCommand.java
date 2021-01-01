@@ -23,6 +23,7 @@ public class ItemToItemCommand  implements Converter<Item, ItemCommand> {
         command.setParentItemName(source.getParentItemName());
         command.setPriority(source.getPriority());
         command.setTag(source.getTag());
+        command.setImage(source.getImage());
         return command;
     }
 }

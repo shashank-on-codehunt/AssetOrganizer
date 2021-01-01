@@ -21,4 +21,5 @@ public class Item {
     private int priority;
     private String tag;
     private String userId;
+    private Byte[] image;
 }
