@@ -1,9 +1,11 @@
 package in.scubeangle.Spring.services;
 
 import in.scubeangle.Spring.commands.ItemCommand;
+import in.scubeangle.Spring.convertors.ItemCommandToImageHashSet;
 import in.scubeangle.Spring.convertors.ItemCommandToItem;
 import in.scubeangle.Spring.convertors.ItemToItemCommand;
 import in.scubeangle.Spring.domains.Item;
+import in.scubeangle.Spring.repository.ImageRepository;
 import in.scubeangle.Spring.repository.ItemRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,11 +21,16 @@ public class ItemServiceImpl implements ItemService{
     private final ItemRepository itemRepository;
     private final ItemCommandToItem itemCommandToItem;
     private final ItemToItemCommand itemToItemCommand;
+    private final ItemCommandToImageHashSet itemCommandToImageHashSet;
 
-    public ItemServiceImpl(ItemRepository itemRepository, ItemCommandToItem itemCommandToItem, ItemToItemCommand itemToItemCommand) {
+    public ItemServiceImpl(ItemRepository itemRepository,
+                           ItemCommandToItem itemCommandToItem,
+                           ItemToItemCommand itemToItemCommand,
+                           ItemCommandToImageHashSet itemCommandToImageHashSet) {
         this.itemRepository = itemRepository;
         this.itemCommandToItem = itemCommandToItem;
         this.itemToItemCommand = itemToItemCommand;
+        this.itemCommandToImageHashSet = itemCommandToImageHashSet;
     }
 
     @Override
@@ -46,6 +53,7 @@ public class ItemServiceImpl implements ItemService{
     @Transactional
     public ItemCommand saveItemCommand(ItemCommand command) {
         Item detachedItem = itemCommandToItem.convert(command);
+        detachedItem.setImages(itemCommandToImageHashSet.convert(command));
         Item savedItem = itemRepository.save(detachedItem);
         log.debug("Saved Item : " + savedItem.getId());
         return itemToItemCommand.convert(savedItem);

@@ -3,6 +3,7 @@ package in.scubeangle.Spring.convertors;
 import in.scubeangle.Spring.commands.ItemCommand;
 import in.scubeangle.Spring.domains.Item;
 import lombok.Synchronized;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -23,7 +24,6 @@ public class ItemCommandToItem implements Converter<ItemCommand, Item> {
         item.setParentItemName(source.getParentItemName());
         item.setPriority(source.getPriority());
         item.setTag(source.getTag());
-        item.setImage(source.getImage());
         return item;
     }
 }

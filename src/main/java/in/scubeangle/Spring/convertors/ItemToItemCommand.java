@@ -1,11 +1,14 @@
 package in.scubeangle.Spring.convertors;
 
 import in.scubeangle.Spring.commands.ItemCommand;
+import in.scubeangle.Spring.domains.Image;
 import in.scubeangle.Spring.domains.Item;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
+
+import java.util.HashSet;
 
 @Component
 public class ItemToItemCommand  implements Converter<Item, ItemCommand> {
@@ -23,7 +26,6 @@ public class ItemToItemCommand  implements Converter<Item, ItemCommand> {
         command.setParentItemName(source.getParentItemName());
         command.setPriority(source.getPriority());
         command.setTag(source.getTag());
-        command.setImage(source.getImage());
         return command;
     }
 }

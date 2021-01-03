@@ -19,6 +19,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web-services'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
+	// https://mvnrepository.com/artifact/org.webjars/jquery
+	compile group: 'org.webjars', name: 'jquery', version: '2.2.4'
 	// https://mvnrepository.com/artifact/com.h2database/h2
 	testCompile group: 'com.h2database', name: 'h2', version: '1.4.200'
 	// https://mvnrepository.com/artifact/org.projectlombok/lombok
