@@ -4,11 +4,6 @@ $(document).ready(function () {
     // File Upload Related Logic Start
     $('.progress').hide()
     //Upload image button onclick , currently not in use
-    $("#uploadButton").click(function (event) {
-        //stop submit the form, we will post it manually.
-        event.preventDefault();
-        uploadButtonClick();
-    });
     $("#submit").click(function (event) {
         //stop submit the form, we will post it manually.
         event.preventDefault();
