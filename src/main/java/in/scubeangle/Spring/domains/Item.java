@@ -2,11 +2,11 @@ package in.scubeangle.Spring.domains;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.Cascade;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @EqualsAndHashCode()
@@ -19,6 +19,11 @@ public class Item {
     private String itemName;
     private String parentItemName;
     private int priority;
-    private String tag;
     private String userId;
+
+    @ManyToMany
+    @JoinTable(name = "item_tags",
+            joinColumns = @JoinColumn(name = "item_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private Set<Tag> tags = new HashSet<>();
 }
