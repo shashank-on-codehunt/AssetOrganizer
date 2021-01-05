@@ -6,12 +6,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 public class TagCommand {
     private Long id;
     private String tagName;
 
     public TagCommand(String tagName) {
-        tagName=tagName;
+        this.tagName=tagName;
     }
 }

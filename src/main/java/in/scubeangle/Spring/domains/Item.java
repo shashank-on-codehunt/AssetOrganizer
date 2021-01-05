@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@EqualsAndHashCode()
 @Entity
 public class Item {
     @Id
@@ -21,7 +20,7 @@ public class Item {
     private int priority;
     private String userId;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch = FetchType.LAZY)
     @JoinTable(name = "item_tags",
             joinColumns = @JoinColumn(name = "item_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))

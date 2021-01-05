@@ -5,6 +5,7 @@ import in.scubeangle.Spring.convertors.ItemCommandToItem;
 import in.scubeangle.Spring.convertors.ItemToItemCommand;
 import in.scubeangle.Spring.domains.Item;
 import in.scubeangle.Spring.repository.ItemRepository;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,17 +15,12 @@ import java.util.Optional;
 import java.util.Set;
 
 @Slf4j
+@AllArgsConstructor
 @Service
 public class ItemServiceImpl implements ItemService{
     private final ItemRepository itemRepository;
     private final ItemCommandToItem itemCommandToItem;
     private final ItemToItemCommand itemToItemCommand;
-
-    public ItemServiceImpl(ItemRepository itemRepository, ItemCommandToItem itemCommandToItem, ItemToItemCommand itemToItemCommand) {
-        this.itemRepository = itemRepository;
-        this.itemCommandToItem = itemCommandToItem;
-        this.itemToItemCommand = itemToItemCommand;
-    }
 
     @Override
     public Set<Item> getItems() {

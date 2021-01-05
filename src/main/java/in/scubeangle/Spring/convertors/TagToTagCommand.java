@@ -17,9 +17,8 @@ public class TagToTagCommand implements Converter<Tag, TagCommand> {
         if (source == null) {
             return null;
         }
-        final TagCommand tagCommand = new TagCommand();
+        final TagCommand tagCommand = new TagCommand(source.getTagName());
         tagCommand.setId(source.getId());
-        tagCommand.setTagName(source.getTagName());
         return tagCommand;
     }
 }
