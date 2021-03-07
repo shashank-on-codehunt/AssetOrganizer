@@ -1,3 +1,40 @@
-Welcome To Items Hierarchy Management
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="../../../static/js/ItemForm.js"
+            th:src="@{/js/ItemForm.js}"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <title>Item Class</title>
+</head>
+<body>
+<h1>Welcome To Items Hierarchy Management</h1>
 <br/>
-Home Page is Under Construction, try with "/item" for now.
+<table class="table table-hover table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Item Name</th>
+        <th scope="col">Item Parent</th>
+        <th scope="col">Priority</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.itemName}">Mark two</td>
+        <td th:text="${item.parentItemName}">Otto1</td>
+        <td th:text="${item.priority}">@mdo</td>
+    </tr>
+    </tbody>
+</table>
+<a href="#" class="btn btn-md btn-success float-right" th:href="@{/item}">Add Item</a>
+</body>
+</html>

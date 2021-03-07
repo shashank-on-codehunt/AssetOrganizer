@@ -24,4 +24,10 @@ public class ItemController {
 
         return "index";
     }
+    @RequestMapping(value={"/","/show"})
+    public String showItemListTable(Model model){
+        model.addAttribute("items", itemService.getItems());
+        System.out.println("hello book");
+        return "index";
+    }
 }
