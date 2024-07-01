@@ -13,4 +13,5 @@ This application is made so as to store the Assets or Items in Hierarchial Manne
 - jQuery 
 
 ### Connecting Technology
-- Gradle 
+- Gradle
+- To Integrate Buildkite
